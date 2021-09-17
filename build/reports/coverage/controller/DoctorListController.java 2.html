@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DoctorListController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt1</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">DoctorListController.java</span></div><h1>DoctorListController.java</h1><pre class="source lang-java linenums">package controller;
+
+import model.Doctor;
+import model.Transfer;
+
+import javax.print.Doc;
+import java.lang.UnsupportedOperationException;
+import java.util.ArrayList;
+
+/**
+ * This class is used to manage the Doctors information
+ */
+public class DoctorListController {
+
+    /**
+	 * The EPA Controller
+ 	 */
+    private EPAController ePAController;
+
+	/**
+	 * Constructor for the EPA Controller
+	 * @param ePAController - ePA Controller
+	 */
+<span class="fc" id="L24">	public DoctorListController(EPAController ePAController) {</span>
+<span class="fc" id="L25">		this.ePAController = ePAController;</span>
+<span class="fc" id="L26">    }</span>
+
+    /**
+ 	 *
+ 	 * Create new doctor object
+	 *
+ 	 * @param name - doctor's name
+	 * @param subject - doctor's professional subject of expertise
+	 * @param address - doctor's office address
+	 * method createDoctor - creates a new doctor object and add it to ePA System
+ 	 */
+    public void createDoctor(String name, String subject, String address) throws IllegalArgumentException {
+<span class="fc bfc" id="L38" title="All 2 branches covered.">		if(!validDoctorInput(name, address, subject)){</span>
+<span class="fc" id="L39">			throw new IllegalArgumentException();</span>
+		}
+		else {
+<span class="fc" id="L42">			Doctor newDoc = new Doctor(name, subject, address);</span>
+<span class="fc" id="L43">			ePAController.getePA().addDoctor(newDoc);</span>
+    	}
+<span class="fc" id="L45">	}</span>
+
+
+    /**
+ 	 *
+ 	 * Check if Doctors information is valid
+ 	 * @param name - doctor's name
+ 	 * @param address - doctor's office address
+ 	 * @param subject - doctor's professional subject of expertise
+ 	 * @return boolean - when 'true' the entered information in all entry-fields is in the correct format and no field is left empty(e.g. name = Name )
+	 * 					 when 'false' the entered information in at least one field is incorrect or the field is empty(e.g. name = 11)
+ 	 * @throws UnsupportedOperationException
+ 	 *	 	 	Diese Exception wird geworfen, fallsdie Methode noch nicht implementiert ist. 
+ 	 */
+    public boolean validDoctorInput(String name, String address, String subject){
+<span class="pc bpc" id="L60" title="1 of 6 branches missed.">    	if( name instanceof String &amp;&amp; !name.equals(&quot;&quot;)</span>
+<span class="pc bpc" id="L61" title="1 of 4 branches missed.">				&amp;&amp; address instanceof String &amp;&amp; !address.equals(&quot;&quot;)</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">				&amp;&amp; subject instanceof String &amp;&amp; !subject.equals(&quot;&quot;)){</span>
+<span class="fc" id="L63">    		return true;</span>
+		}else{
+<span class="fc" id="L65">    		return false;</span>
+		}
+
+    }
+
+	/**
+	 * get EpaContoroller
+	 * @return ePAController
+	 */
+
+	public EPAController getePAController() {
+<span class="nc" id="L76">		return ePAController;</span>
+	}
+
+	/**
+	 * set EpcContoroller
+	 * @param ePAController - changed epaContorller object
+	 */
+
+	public void setePAController(EPAController ePAController) {
+<span class="nc" id="L85">		this.ePAController = ePAController;</span>
+<span class="nc" id="L86">	}</span>
+
+	/**
+	 * returns a doctor from the doctor list with the given parameters or null if there is none
+	 * @param name the name of the doctor that shall be loaded
+	 * @param address the address of the doctor that shall be loaded
+	 * @return the doctor object that has attributes that correspond to the given parameters, or null if there is none
+	 */
+	public Doctor loadDoctor(String name, String address) {
+<span class="fc" id="L95">		ArrayList&lt;Doctor&gt; doctors = ePAController.getePA().getDoctorRegister();</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">		for(Doctor doc : doctors) {</span>
+<span class="pc bpc" id="L97" title="1 of 4 branches missed.">			if(doc.getName().equals(name) &amp;&amp; doc.getAddress().equals(address)) {</span>
+<span class="fc" id="L98">				return doc;</span>
+			}
+<span class="fc" id="L100">		}</span>
+<span class="fc" id="L101">		return null;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

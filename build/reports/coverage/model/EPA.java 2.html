@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EPA.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt1</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">EPA.java</span></div><h1>EPA.java</h1><pre class="source lang-java linenums">package model;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+/**
+ * This class represents the administration of the ePA
+ */
+public class EPA implements Serializable {
+
+    /**
+	 * A list of the Records of the patient
+ 	 */
+    private ArrayList&lt;PatientRecord&gt; patientRecords;
+
+    /**
+ 	 * A list of the doctors of the patient
+ 	 */
+    private ArrayList&lt;Doctor&gt; doctorRegister;
+
+	/**
+	 * The active patient in the System
+	 */
+	private Patient activePatient;
+
+	/**
+	 * The active doctor in the System
+	 */
+	private Doctor activeDoctor;
+
+	/**
+	 * The active entry in the System
+	 */
+	private TreatmentEntry activeEntry;
+
+	/**
+	 * The active revision in the System
+	 */
+	private Revision activeRevision;
+
+	/**
+	 * EPA Constructor
+	 */
+<span class="fc" id="L44">	public EPA() {</span>
+<span class="fc" id="L45">		this.patientRecords = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L46">		this.doctorRegister = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L47">    }</span>
+
+    /**
+	 * This method adds a new doctor to the list of registered doctors.
+	 * @param doctor the doctor to be added to the system
+ 	 */
+    public void addDoctor(Doctor doctor) {
+<span class="fc" id="L54">        this.doctorRegister.add(doctor);</span>
+<span class="fc" id="L55">    }</span>
+
+    /**
+	 * This method adds a new patient record into the system.
+ 	 * @param patientRecord the added patient record
+ 	 */
+    public void addPatientRecord(PatientRecord patientRecord) {
+<span class="fc" id="L62">       this.patientRecords.add(patientRecord);</span>
+<span class="fc" id="L63">    }</span>
+
+	/**
+	 * get-Method patientRecords
+	 * @return patientRecords
+	 */
+	public ArrayList&lt;PatientRecord&gt; getPatientRecords() {
+<span class="fc" id="L70">		return patientRecords;</span>
+	}
+
+	/**
+	 * set-Method patientRecords
+	 * @param patientRecords
+	 */
+	public void setPatientRecords(ArrayList&lt;PatientRecord&gt; patientRecords) {
+<span class="nc" id="L78">		this.patientRecords = patientRecords;</span>
+<span class="nc" id="L79">	}</span>
+
+	/**
+	 * get-Method doctorRegister
+	 * @return doctorRegister
+	 */
+	public ArrayList&lt;Doctor&gt; getDoctorRegister() {
+<span class="fc" id="L86">		return doctorRegister;</span>
+	}
+
+	/**
+	 * set-Method doctorRegister
+	 * @param doctorRegister
+	 */
+	public void setDoctorRegister(ArrayList&lt;Doctor&gt; doctorRegister) {
+<span class="nc" id="L94">		this.doctorRegister = doctorRegister;</span>
+<span class="nc" id="L95">	}</span>
+
+	/**
+	 * get-Method activePatient
+	 * @return activePatient
+	 */
+	public Patient getActivePatient() {
+<span class="nc" id="L102">		return activePatient;</span>
+	}
+
+	/**
+	 * set-Method activePatient
+	 * @param patient
+	 */
+	public void setActivePatient(Patient patient) {
+<span class="nc" id="L110">		this.activePatient = patient;</span>
+<span class="nc" id="L111">	}</span>
+
+	/**
+	 * get-Method activeDoctor
+	 * @return activeDoctor
+	 */
+	public Doctor getActiveDoctor() {
+<span class="nc" id="L118">		return activeDoctor;</span>
+	}
+
+	/**
+	 * set-Method activeDoctor
+	 * @param doctor
+	 */
+	public void setActiveDoctor(Doctor doctor) {
+<span class="nc" id="L126">		this.activeDoctor = doctor;</span>
+<span class="nc" id="L127">	}</span>
+
+	/**
+	 * get-Method activeEntry
+	 * @return activeEntry
+	 */
+	public TreatmentEntry getActiveEntry() {
+<span class="nc" id="L134">		return activeEntry;</span>
+	}
+
+	/**
+	 * set-Method activeEntry
+	 * @param entry
+	 */
+	public void setActiveEntry(TreatmentEntry entry) {
+<span class="nc" id="L142">		this.activeEntry = entry;</span>
+<span class="nc" id="L143">	}</span>
+
+	/**
+	 * get-Method activeRevision
+	 * @return activeRevision
+	 */
+	public Revision getActiveRevision() {
+<span class="nc" id="L150">		return activeRevision;</span>
+	}
+
+	/**
+	 * set-Method activeRevision
+	 * @param revision
+	 */
+	public void setActiveRevision(Revision revision) {
+<span class="nc" id="L158">		this.activeRevision = revision;</span>
+<span class="nc" id="L159">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

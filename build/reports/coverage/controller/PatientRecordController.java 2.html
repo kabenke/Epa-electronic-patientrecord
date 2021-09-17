@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientRecordController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt1</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">PatientRecordController.java</span></div><h1>PatientRecordController.java</h1><pre class="source lang-java linenums">package controller;
+
+import java.util.Date;
+import java.util.ArrayList;
+import java.lang.UnsupportedOperationException;
+import abstractuserinterfaces.TreatmentEntryAUI;
+import abstractuserinterfaces.RevisionsAUI;
+import model.*;
+
+
+/**
+ * This class manages all the Patient Records and their Data
+ */
+public class PatientRecordController {
+
+	/**
+	 * Attribute to access the EPAController
+	 */
+	private EPAController ePAController;
+
+	/**
+	 * Attribute to access the TreatmentEntryAUI
+	 */
+	private TreatmentEntryAUI treatmentEntryAUI;
+
+	/**
+	 * Attribute to access the RevisionsAUI
+	 */
+	private RevisionsAUI revisionsAUI;
+
+	/**
+	 * Constructor of the PatientRecordController
+	 * @param ePAController EPAController
+	 */
+<span class="fc" id="L35">	public PatientRecordController(EPAController ePAController) {</span>
+<span class="fc" id="L36">		this.ePAController = ePAController;</span>
+<span class="fc" id="L37">	}</span>
+
+	/**
+	 *
+	 * @param insuranceNBR InsuranceNBR of the Patient
+	 * @param name Name of the Patient
+	 * @param address Address of the Patient
+	 * @param gender Gender of the Patient
+	 * @param dateOfBirth DateOfBirth of the Patient
+	 * @param insurance Insurance of the Patient
+	 */
+	public void createPatientRecord(String insuranceNBR, String name, String address, String gender, Date dateOfBirth, String insurance) {
+<span class="fc bfc" id="L49" title="All 2 branches covered.">		if(validInput(insuranceNBR, name, address, gender, dateOfBirth, insurance))</span>
+		{
+<span class="fc" id="L51">			Patient patient = new Patient(insuranceNBR, name, address, gender, dateOfBirth, insurance);</span>
+<span class="fc" id="L52">			ArrayList&lt;PatientRecord&gt; records = getePAController().getePA().getPatientRecords();</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">			if(loadPatientRecord(patient.getInsuranceNBR()) == null) { /* if Patient Record does not exist yet */</span>
+<span class="fc" id="L54">				PatientRecord patientRecord = new PatientRecord(patient);</span>
+<span class="fc" id="L55">				records.add(patientRecord);</span>
+<span class="fc" id="L56">			}</span>
+			else{
+<span class="fc" id="L58">				throw new IllegalArgumentException(&quot;Patient already has a PatientRecord&quot;);</span>
+			}
+<span class="fc" id="L60">		} else {</span>
+<span class="fc" id="L61">			throw new IllegalArgumentException(&quot;Check your information&quot;);</span>
+		}
+
+<span class="fc" id="L64">	}</span>
+
+	/**
+	 * Creates a new Revision for the Patient with the given Data
+	 *
+	 * @param insuranceNBR InsuranceNBR of the Patient
+	 * @param finding Finding
+	 * @param diagnosis Diagnosis
+	 * @param therapy Therapy
+	 * @param medicationPlans Mediaction Plan
+	 * @param date The Date of the Treatment
+	 * @param notes Notes for the conversation with the Patient
+	 * @param symptomes Symptoms
+	 * @param treatmentEntry Treatment Entry
+	 */
+	public void createRevision(String insuranceNBR, String finding, String diagnosis, String therapy, String medicationPlans, Date date, String notes, String symptomes, TreatmentEntry treatmentEntry)  {
+<span class="fc bfc" id="L80" title="All 2 branches covered.">		if(!validRevisionInput(insuranceNBR, finding, diagnosis, therapy, medicationPlans, date, notes, symptomes, treatmentEntry)) {</span>
+<span class="fc" id="L81">			throw new IllegalArgumentException(&quot;invalid inputs&quot;);</span>
+		}
+<span class="fc" id="L83">		boolean hasBeenAdded = false;</span>
+<span class="fc" id="L84">		Revision revision=new Revision(finding,diagnosis,therapy,medicationPlans,date,notes,symptomes);</span>
+<span class="fc" id="L85">		ArrayList&lt;PatientRecord&gt; records = getePAController().getePA().getPatientRecords();</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">		for(PatientRecord patientRecord : records){</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">			if(patientRecord.getPatient().getInsuranceNBR().equals(insuranceNBR)){</span>
+<span class="fc" id="L88">				ArrayList&lt;TreatmentEntry&gt; treatmentEntries = patientRecord.getTreatmentEntrys();</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">				if(!treatmentEntries.isEmpty()) {</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">					for(TreatmentEntry currentTreatmentEntry : treatmentEntries) {</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">						if (currentTreatmentEntry.equals(treatmentEntry)) {</span>
+<span class="fc" id="L92">							currentTreatmentEntry.addRevision(revision);</span>
+<span class="fc" id="L93">							hasBeenAdded = true;</span>
+						}
+<span class="fc" id="L95">					}</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">					if(!hasBeenAdded) {</span>
+<span class="fc" id="L97">						patientRecord.addTreatmentEntry(treatmentEntry); /* add entry to the list */</span>
+						/* add revision to the last element in the list */
+<span class="fc" id="L99">						treatmentEntries.get(treatmentEntries.size() - 1).addRevision(revision);</span>
+					}
+				} else { /* empty list */
+<span class="fc" id="L102">					patientRecord.addTreatmentEntry(treatmentEntry); /* add entry to the list */</span>
+					/* add revision to the last element in the list */
+<span class="fc" id="L104">					treatmentEntries.get(treatmentEntries.size() - 1).addRevision(revision);</span>
+				}
+			}
+<span class="fc" id="L107">		}</span>
+<span class="fc" id="L108">	}</span>
+
+	/**
+	 * helping method to validate inputs for revision
+	 * @param insuranceNBR the patients insurance number
+	 * @param finding the doctors finding
+	 * @param diagnosis the doctors diagnosis
+	 * @param therapy the recommended therapy
+	 * @param medicationPlans the doctors medication plans
+	 * @param date the current date
+	 * @param notes optional notes
+	 * @param symptomes the patients symptomes
+	 * @param treatmentEntry the treatment entry to add the revision to
+	 * @return true if all the data is valid, false otherwise
+	 */
+	private boolean validRevisionInput(String insuranceNBR, String finding, String diagnosis, String therapy, String medicationPlans, 
+										Date date, String notes, String symptomes, TreatmentEntry treatmentEntry) {
+<span class="pc bpc" id="L125" title="8 of 18 branches missed.">	    if(insuranceNBR != null &amp;&amp; finding != null &amp;&amp; diagnosis != null &amp;&amp; therapy != null &amp;&amp; medicationPlans != null &amp;&amp; date != null &amp;&amp;</span>
+		    notes != null &amp;&amp; symptomes != null &amp;&amp; treatmentEntry != null) {
+<span class="fc" id="L127">			   return true;</span>
+		}	
+<span class="fc" id="L129">		return false;	</span>
+	}
+
+	/**
+	 * Restrict the data that gets transferred to a specialist
+	 *
+	 * @param insuranceNBR the insurance number of the patient
+	 * @param transferData a boolean array where a true at index i means that the attribute nbr i gets transfered
+	 * @param treatmentEntry the entry which contains the transfer
+	 */
+	public void restrictData(String insuranceNBR, boolean[] transferData, TreatmentEntry treatmentEntry) {
+<span class="fc" id="L140">		ArrayList&lt;Revision&gt; revisions = treatmentEntry.getRevisions();</span>
+<span class="fc" id="L141">		Revision currentRevision = revisions.get(revisions.size() - 1);</span>
+<span class="fc" id="L142">		Transfer transfer = currentRevision.getTransfer();</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">		if(transfer != null) {</span>
+<span class="fc" id="L144">			transfer.setTransferData(transferData);</span>
+		}
+<span class="fc" id="L146">	}</span>
+
+	/**
+	 * Provides a list of all Treatment Entries for a patient in a particular Time Interval
+	 *
+	 * @param begin Start Date of the Interval
+	 * @param end End Date of the Interval
+	 * @param insuranceNBR Insurance NBR of the Patient
+	 * @return List of all Treatment Entries in the Time Interval
+	 */
+	public ArrayList&lt;TreatmentEntry&gt; summaryByDate(Date begin, Date end, String insuranceNBR)
+			throws IllegalArgumentException {
+
+<span class="fc bfc" id="L159" title="All 2 branches covered.">		if(!inputsNotNull(begin, end)) {</span>
+<span class="fc" id="L160">			throw new IllegalArgumentException(&quot;All inputs have to be not equal to null&quot;);</span>
+		}
+
+<span class="fc" id="L163">		PatientRecord patientRecord = loadPatientRecord(insuranceNBR);</span>
+
+<span class="fc bfc" id="L165" title="All 2 branches covered.">		if(patientRecord == null) {</span>
+<span class="fc" id="L166">			throw new IllegalArgumentException(&quot;No patient with given insurance number in the system&quot;);</span>
+		}
+
+<span class="fc bfc" id="L169" title="All 2 branches covered.">		if(begin.after(end))</span>
+		{
+<span class="fc" id="L171">			throw new IllegalArgumentException(&quot;Start Date must be before End Date!&quot;);</span>
+		}
+
+<span class="fc" id="L174">		ArrayList&lt;TreatmentEntry&gt; treatmentEntrys = patientRecord.getTreatmentEntrys();</span>
+<span class="fc" id="L175">		ArrayList&lt;TreatmentEntry&gt; treatmentsByDate = new ArrayList&lt;&gt;();</span>
+
+<span class="fc bfc" id="L177" title="All 2 branches covered.">		for(TreatmentEntry treatmentEntry : treatmentEntrys) {</span>
+<span class="fc" id="L178">			ArrayList&lt;Revision&gt; revisions = treatmentEntry.getRevisions();</span>
+
+<span class="pc bpc" id="L180" title="1 of 2 branches missed.">			if(!revisions.isEmpty()) { /* cant usually be empty, might be redundant */</span>
+<span class="fc" id="L181">				Revision currentRevision = revisions.get(revisions.size() - 1); /* last element = current revision */</span>
+
+<span class="fc bfc" id="L183" title="All 2 branches covered.">				if(inTimePeriod(begin, end, currentRevision.getDate()))</span>
+				{
+<span class="fc" id="L185">					treatmentsByDate.add(treatmentEntry);</span>
+				}
+			}
+<span class="fc" id="L188">		}</span>
+<span class="fc" id="L189">		return treatmentsByDate;</span>
+	}
+
+	/**
+	 * method that determines whether a given date is in a given time period
+	 * @param begin the begin of the time period
+	 * @param end the end of the time period
+	 * @param revisionDate the date to be checked for
+	 * @return true if the given date is in the time period, false otherwise
+	 */
+	private boolean inTimePeriod(Date begin, Date end, Date revisionDate) {
+<span class="pc bpc" id="L200" title="3 of 4 branches missed.">		return (revisionDate.after(begin) &amp;&amp; revisionDate.before(end)) ||</span>
+<span class="pc bpc" id="L201" title="1 of 4 branches missed.">				(!revisionDate.before(begin)) &amp;&amp; (!revisionDate.after(begin)) ||</span>
+<span class="pc bpc" id="L202" title="3 of 4 branches missed.">				(!revisionDate.before(end)) &amp;&amp; (!revisionDate.after(end));</span>
+	}
+
+	/**
+	 * private method to validate inputs for summaryByDate
+	 * @param begin the begin date
+	 * @param end the end date
+	 * @return whether all objects are not equal to null
+	 */
+	private boolean inputsNotNull(Date begin, Date end) {
+<span class="fc bfc" id="L212" title="All 4 branches covered.">		return (begin != null &amp;&amp; end != null);</span>
+	}
+
+	/**
+	 * Provides the list of all treatment entries for a patient with a specific ICD code
+	 *
+	 * @param icd The ICD-Code
+	 * @param insuranceNBR The Insurance NBR of the Patient
+	 * @return List of all Treatment Entries with the given ICD-Code
+	 */
+	public ArrayList&lt;Revision&gt; summaryByICD(String icd, String insuranceNBR)
+			throws IllegalArgumentException {
+<span class="fc" id="L224">		PatientRecord patientRecord = loadPatientRecord(insuranceNBR);</span>
+<span class="fc bfc" id="L225" title="All 2 branches covered.">		if(!checkICD(icd)) {</span>
+<span class="fc" id="L226">			throw new IllegalArgumentException(&quot;Not a valid icd&quot;);</span>
+		}
+<span class="fc bfc" id="L228" title="All 2 branches covered.">		if(patientRecord == null) { /* no patient with given insuranceNBR in the system */</span>
+<span class="fc" id="L229">			throw new IllegalArgumentException(&quot;No patient with given insuranceNBR in the system.&quot;);</span>
+		}
+<span class="fc" id="L231">		ArrayList&lt;TreatmentEntry&gt; treatmentEntrys = patientRecord.getTreatmentEntrys();</span>
+<span class="fc" id="L232">		ArrayList&lt;Revision&gt; revisionsWithICD = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L233" title="All 2 branches covered.">		for(TreatmentEntry treatmentEntry : treatmentEntrys) {</span>
+<span class="fc" id="L234">			ArrayList&lt;Revision&gt; revisions = treatmentEntry.getRevisions();</span>
+<span class="pc bpc" id="L235" title="1 of 2 branches missed.">			if(!revisions.isEmpty()) { /* cant usually be empty, might be redundant */</span>
+<span class="fc" id="L236">				Revision currentRevision = revisions.get(revisions.size() - 1); /* last element = current revision */</span>
+<span class="fc bfc" id="L237" title="All 2 branches covered.">				if(currentRevision.getDiagnosis().equals(icd)) {</span>
+<span class="fc" id="L238">					revisionsWithICD.add(currentRevision);</span>
+				}
+			}
+<span class="fc" id="L241">		}</span>
+<span class="fc" id="L242">		return revisionsWithICD;</span>
+	}
+
+	/**
+	 * Checks whether the input is in ICD-Code format
+	 *
+	 * @param icd The ICD-Code
+	 * @return boolean Indicates whether the input is an ICD-Code
+	 */
+	public boolean checkICD(String icd) {
+<span class="fc" id="L252">		final int LENGTH_OF_ICD = 5;</span>
+
+		//to avoid nullpointerexceptions
+<span class="fc bfc" id="L255" title="All 2 branches covered.">		if(icd == null) {</span>
+<span class="fc" id="L256">			return false;</span>
+		}
+		//ICD-Code has atleast 3 characters and not exactly 4
+<span class="fc bfc" id="L259" title="All 4 branches covered.">		if(icd.length() &lt; 3 || icd.length() == 4){</span>
+<span class="fc" id="L260">			return false;</span>
+		}
+		//First character has to be uppercase
+<span class="pc bpc" id="L263" title="1 of 4 branches missed.">		if(!(Character.isLetter(icd.charAt(0)) &amp;&amp; Character.isUpperCase(icd.charAt(0)))){</span>
+<span class="fc" id="L264">			return false;</span>
+		}
+		//Second and third characters have to be numbers
+<span class="pc bpc" id="L267" title="1 of 4 branches missed.">		if(!(Character.isDigit(icd.charAt(1)) &amp;&amp; Character.isDigit(icd.charAt(2)))){</span>
+<span class="fc" id="L268">			return false;</span>
+		}
+		//If the code consists of more than 5 characters, the fourth one has to be a dot, and all following have to be numbers
+<span class="fc bfc" id="L271" title="All 2 branches covered.">		if(icd.length() &gt;= LENGTH_OF_ICD){</span>
+<span class="fc bfc" id="L272" title="All 2 branches covered.">			if(!(icd.charAt(3) == '.')){</span>
+<span class="fc" id="L273">				return false;</span>
+			}
+<span class="fc bfc" id="L275" title="All 2 branches covered.">			for(int i=4; i&lt;icd.length(); i++){</span>
+<span class="fc bfc" id="L276" title="All 2 branches covered.">				if(!Character.isDigit(icd.charAt(i))){</span>
+<span class="fc" id="L277">					return false;</span>
+				}
+			}
+		}
+		//valid ICD-code
+<span class="fc" id="L282">		return true;</span>
+	}
+
+	/**
+	 * Returns (if possible) a Patient Record with a specific Insurance Number
+	 * @param insuranceNBR Insurance Number of the Patient
+	 * @return PatientRecord The PatientRecord with the specific Insurance Number
+	 */
+	public PatientRecord loadPatientRecord(String insuranceNBR) {
+<span class="fc" id="L291">		ArrayList&lt;PatientRecord&gt; records = getePAController().getePA().getPatientRecords();</span>
+<span class="fc bfc" id="L292" title="All 2 branches covered.">		for(int i=0; i&lt;records.size(); i++){</span>
+<span class="fc bfc" id="L293" title="All 2 branches covered.">			if(records.get(i).getPatient().getInsuranceNBR().equals(insuranceNBR)){</span>
+<span class="fc" id="L294">				return records.get(i);</span>
+			}
+		}
+<span class="fc" id="L297">		return null;</span>
+	}
+
+	/**
+	 * Checks whether all entries have the correct Format
+	 *
+	 * @param insuranceNBR Insurance Number of the Patient
+	 * @param name Name of the Patient
+	 * @param address Address of the Patient
+	 * @param gender Gender of the Patient
+	 * @param dateOfBirth Patient`s Date of Birth
+	 * @param insurance Patient's Insurance
+	 * @return boolean Indicates if the Data has the correct format
+	 */
+	public boolean validInput(String insuranceNBR, String name, String address, String gender, Date dateOfBirth, String insurance){
+<span class="pc bpc" id="L312" title="5 of 12 branches missed.">		if(!insuranceNBR.equals(&quot;&quot;) &amp;&amp; !name.equals(&quot;&quot;) &amp;&amp; !address.equals(&quot;&quot;) &amp;&amp; !gender.equals(&quot;&quot;) &amp;&amp; !(dateOfBirth == null) &amp;&amp; !insurance.equals(&quot;&quot;))</span>
+		{
+<span class="fc" id="L314">			return true;</span>
+		}
+<span class="fc" id="L316">		return false;</span>
+	}
+
+	//Getter und Setter:
+
+	/**
+	 * Get-Method for the EPAController
+	 * @return EPAController
+	 */
+	public EPAController getePAController() {
+<span class="fc" id="L326">		return ePAController;</span>
+	}
+
+	/**
+	 * Set-Method for the EPAController
+	 * @param ePAController EPAController
+	 */
+	public void setePAController(EPAController ePAController) {
+<span class="nc" id="L334">		this.ePAController = ePAController;</span>
+<span class="nc" id="L335">	}</span>
+
+	/**
+	 * Get-Method for the TreatmentEntryAUI
+	 * @return TreatmentEntryAUI
+	 */
+	public TreatmentEntryAUI getTreatmentEntryAUI() {
+<span class="nc" id="L342">		return treatmentEntryAUI;</span>
+	}
+
+	/**
+	 * Set-Method for the TreatmentEntryAUI
+	 * @param treatmentEntryAUI TreatmentEntryAUI
+	 */
+	public void setTreatmentEntryAUI(TreatmentEntryAUI treatmentEntryAUI) {
+<span class="nc" id="L350">		this.treatmentEntryAUI = treatmentEntryAUI;</span>
+<span class="nc" id="L351">	}</span>
+
+	/**
+	 * Get-Method for the RevisionsAUI
+	 * @return RevisionsAUI
+	 */
+	public RevisionsAUI getRevisionsAUI() {
+<span class="nc" id="L358">		return revisionsAUI;</span>
+	}
+
+	/**
+	 * Set-Method for the RevisionsAUI
+	 * @param revisionsAUI RevisionsAUI
+	 */
+	public void setRevisionsAUI(RevisionsAUI revisionsAUI) {
+<span class="nc" id="L366">		this.revisionsAUI = revisionsAUI;</span>
+<span class="nc" id="L367">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

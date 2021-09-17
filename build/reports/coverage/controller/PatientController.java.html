@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt1</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">PatientController.java</span></div><h1>PatientController.java</h1><pre class="source lang-java linenums">package controller;
+
+import abstractuserinterfaces.PersonalDataAUI;
+import model.Patient;
+import model.PatientRecord;
+import java.util.Date;
+import java.util.ArrayList;
+import java.lang.UnsupportedOperationException;
+
+/**
+ * This class manages all Patients
+ */
+public class PatientController {
+
+    /**
+ 	 * The ePA Controller
+ 	 */
+    private EPAController ePAController;
+
+    /**
+ 	 * The PersonalDataAUI
+ 	 */
+    private PersonalDataAUI personalDataAUI;
+
+	/**
+	 * Constructor for the ePA Controller
+	 * @param ePAController ePA Controller
+	 */
+<span class="fc" id="L29">	public PatientController(EPAController ePAController) {</span>
+<span class="fc" id="L30">		this.ePAController = ePAController;</span>
+<span class="fc" id="L31">    }</span>
+
+	/**
+	 * Ändert die Daten in der Akte eines bestimmten Patienten
+	 *
+	 * @param insuranceNBR Versichertennummer des Patienten
+	 * @param name Name des Patienten
+	 * @param address Adresse des Patienten
+	 * @param gender Geschlecht des Patienten
+	 * @param dateOfBirth Geburtsdatum des Patienten
+	 * @param insurance Versicherung des Patienten
+	 * @param patientRecord Akte wo die Daten geändert werden sollen
+	 * @throws IllegalArgumentException
+	 *	 	 	Diese Exception wird geworfen, falls die Eingaben nicht valide sind.
+	 */
+	public void editPatientDetails(String insuranceNBR, String name, String address, String gender, Date dateOfBirth, String insurance, PatientRecord patientRecord) throws IllegalArgumentException {
+<span class="fc bfc" id="L47" title="All 2 branches covered.">		if(patientRecord == null) {</span>
+<span class="fc" id="L48">			throw new IllegalArgumentException(&quot;Invalid patientRecord&quot;);</span>
+		}
+<span class="fc bfc" id="L50" title="All 2 branches covered.">		if(!getePAController().getPatientRecordController().validInput(insuranceNBR, name, address, gender, dateOfBirth, insurance)){</span>
+<span class="fc" id="L51">			throw new IllegalArgumentException(&quot;Parameters in false format&quot;);</span>
+		}
+		else{
+<span class="fc" id="L54">			Patient patient = patientRecord.getPatient();</span>
+<span class="fc" id="L55">			patient.setName(name);</span>
+<span class="fc" id="L56">			patient.setAddress(address);</span>
+<span class="fc" id="L57">			patient.setGender(gender);</span>
+<span class="fc" id="L58">			patient.setDateOfBirth(dateOfBirth);</span>
+<span class="fc" id="L59">			patient.setInsurance(insurance);</span>
+<span class="fc" id="L60">			patient.setInsuranceNBR(insuranceNBR);</span>
+		}
+<span class="fc" id="L62">	}</span>
+
+    /**
+ 	 *
+ 	 * Gives the Patient the opportunity to print a Treatment Entry
+ 	 * @param patient the patient for whom the report is printed
+	 * @throws UnsupportedOperationException
+ 	 *	 	 	Diese Exception wird geworfen, fallsdie Methode noch nicht implementiert ist. 
+ 	 */
+    public void print(Patient patient) throws UnsupportedOperationException {
+<span class="nc" id="L72">        throw new UnsupportedOperationException(&quot;Not Yet Implemented!&quot;);</span>
+    }
+
+    /**
+ 	 * This method goes through the list of patient records to check whether the given insurance number is unique
+ 	 * @param insuranceNBR Insurance Number to be checked whether it is unique
+ 	 * @param patientRecords list of patient records to go through
+ 	 * @return true if the number is unique, false otherwise
+ 	 */
+    public boolean checkUniqueInsuranceNBR(String insuranceNBR, ArrayList&lt;PatientRecord&gt; patientRecords) {
+<span class="pc bpc" id="L82" title="1 of 4 branches missed.">        if(insuranceNBR == null || patientRecords == null) {</span>
+<span class="fc" id="L83">			return false;</span>
+		}
+<span class="fc bfc" id="L85" title="All 2 branches covered.">		for(PatientRecord patientRecord : patientRecords) {</span>
+<span class="fc" id="L86">        	Patient patient = patientRecord.getPatient();</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">        	if(patient.getInsuranceNBR().equals(insuranceNBR)) {</span>
+<span class="fc" id="L88">        		return false;</span>
+			}
+<span class="fc" id="L90">		}</span>
+<span class="fc" id="L91">        return true;</span>
+    }
+
+	/**
+	 * Get-Method for the ePA Controller
+	 * @return ePaController
+	 */
+	public EPAController getePAController() {
+<span class="fc" id="L99">		return ePAController;</span>
+	}
+
+	/**
+	 * Set-Method for the ePA Controller
+	 * @param ePAController ePaController
+	 */
+	public void setePAController(EPAController ePAController) {
+<span class="nc" id="L107">		this.ePAController = ePAController;</span>
+<span class="nc" id="L108">	}</span>
+
+	/**
+	 * Get-Method for the PersonalDataAUI
+	 * @return personalDataAUI
+	 */
+	public PersonalDataAUI getPersonalDataAUI() {
+<span class="nc" id="L115">		return personalDataAUI;</span>
+	}
+
+	/**
+	 * Set-Method for the PersonalDataAUI
+	 * @param personalDataAUI personalDataAUI
+	 */
+	public void setPersonalDataAUI(PersonalDataAUI personalDataAUI) {
+<span class="nc" id="L123">		this.personalDataAUI = personalDataAUI;</span>
+<span class="nc" id="L124">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

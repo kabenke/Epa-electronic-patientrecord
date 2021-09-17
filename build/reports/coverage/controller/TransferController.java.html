@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TransferController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt1</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">TransferController.java</span></div><h1>TransferController.java</h1><pre class="source lang-java linenums">package controller;
+
+import model.Doctor;
+import model.Revision;
+import model.Transfer;
+
+/**
+ * This Class manages all Transfers to a Specialist
+ */
+public class TransferController {
+
+    /**
+     * The ePA Controller
+     */
+    private EPAController ePAController;
+
+    /**
+     * Constructor to create a TransferController instance with a given EPAController
+     * @param ePAController the controller used to communicate with the system
+     */
+<span class="fc" id="L21">    public TransferController(EPAController ePAController) {</span>
+<span class="fc" id="L22">        this.ePAController = ePAController;</span>
+<span class="fc" id="L23">    }</span>
+
+    /**
+     * Allows you to get the EPAController stored in the EPAController attribute
+     * @return the EPAController used to communicate with the system
+     */
+    public EPAController getePAController() {
+<span class="nc" id="L30">        return this.ePAController;</span>
+    }
+
+    /**
+     * Allows you to set the EPAController attribute to a given EPAController
+     * @param ePAController the EPAController that should be set for this controller
+     */
+    public void setePAController(EPAController ePAController) {
+<span class="nc" id="L38">        this.ePAController = ePAController;</span>
+<span class="nc" id="L39">    }</span>
+
+    /**
+     * This method allows you to add a Transfer object to the transfer attribute of a given
+     * Revision object
+     * @param revision the object that has a transfer attribute that will be set
+     * @param transfer the Transfer object to which the attribute will be set
+     */
+    public void addTransfer(Revision revision, Transfer transfer) {
+<span class="fc" id="L48">        revision.setTransfer(transfer);</span>
+<span class="fc" id="L49">    }</span>
+
+    /**
+     * Returns a boolean that represents whether the give doctor is the doctor that the transfer is addressed to.
+     * @param doctor given doctor object for which is checked whether it is part of the Transfer object
+     * @param transfer given Transfer object that gets checked for the doctor attribute
+     * @return true in the case that the given transfer is addressed to the doctor, false otherwise.
+     */
+    public boolean checkTransfer(Doctor doctor, Transfer transfer) {
+<span class="fc bfc" id="L58" title="All 4 branches covered.">         if(!(doctor == null) &amp;&amp; !(transfer == null)) {</span>
+<span class="fc" id="L59">             return transfer.getDoctor().equals(doctor);</span>
+         }
+<span class="fc" id="L61">         return false;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

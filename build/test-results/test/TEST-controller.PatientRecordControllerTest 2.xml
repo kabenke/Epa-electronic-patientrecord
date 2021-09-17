@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="controller.PatientRecordControllerTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2021-03-05T09:57:33" hostname="oyoki" time="0.084">
+  <properties/>
+  <testcase name="testCreateRevisionNoTreatmentEntries" classname="controller.PatientRecordControllerTest" time="0.004"/>
+  <testcase name="testCheckICD" classname="controller.PatientRecordControllerTest" time="0.002"/>
+  <testcase name="testSummaryByICDValidICD" classname="controller.PatientRecordControllerTest" time="0.001"/>
+  <testcase name="testSummaryByDateBeginNull" classname="controller.PatientRecordControllerTest" time="0.001"/>
+  <testcase name="testCreateRevisionAlreadyARevision" classname="controller.PatientRecordControllerTest" time="0.003"/>
+  <testcase name="testSummaryByDatePatientRecordNull" classname="controller.PatientRecordControllerTest" time="0.003"/>
+  <testcase name="testRestrictDataTransferNotNull" classname="controller.PatientRecordControllerTest" time="0.001"/>
+  <testcase name="testRestrictDataTransferNull" classname="controller.PatientRecordControllerTest" time="0.002"/>
+  <testcase name="testSummaryByICDInvalidICD" classname="controller.PatientRecordControllerTest" time="0.002"/>
+  <testcase name="testCreateRevisionNotTheRightTreatmentEntry" classname="controller.PatientRecordControllerTest" time="0.002"/>
+  <testcase name="testICDNull" classname="controller.PatientRecordControllerTest" time="0.002"/>
+  <testcase name="testICDEmpty" classname="controller.PatientRecordControllerTest" time="0.002"/>
+  <testcase name="testSummaryByDateDatesSwitched" classname="controller.PatientRecordControllerTest" time="0.005"/>
+  <testcase name="testPatientRecordNull" classname="controller.PatientRecordControllerTest" time="0.004"/>
+  <testcase name="testCreatePatientRecordWithRecord" classname="controller.PatientRecordControllerTest" time="0.004"/>
+  <testcase name="testCreatePatientRecordValid" classname="controller.PatientRecordControllerTest" time="0.003"/>
+  <testcase name="testSummaryByDateNoRevision" classname="controller.PatientRecordControllerTest" time="0.003"/>
+  <testcase name="testSummaryByDateAllValid" classname="controller.PatientRecordControllerTest" time="0.003"/>
+  <testcase name="testCreateRevisionInvalidInput" classname="controller.PatientRecordControllerTest" time="0.005"/>
+  <testcase name="testLoadPatientRecord" classname="controller.PatientRecordControllerTest" time="0.001"/>
+  <testcase name="testCreatePatientRecordInvalid" classname="controller.PatientRecordControllerTest" time="0.002"/>
+  <testcase name="testSummaryByDateEndNull" classname="controller.PatientRecordControllerTest" time="0.003"/>
+  <system-out><![CDATA[in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

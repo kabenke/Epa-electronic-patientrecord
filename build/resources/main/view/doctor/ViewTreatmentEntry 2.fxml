@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<fx:root prefHeight="400.0" prefWidth="640.0" type="VBox" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+        <Label alignment="CENTER" layoutX="10.0" layoutY="14.0" prefHeight="46.0" prefWidth="619.0" style="&#10;" text="Treatment entry" textAlignment="CENTER" textFill="#90c91e" wrapText="false">
+          <font>
+            <Font size="30.0" />
+          </font>
+        </Label>
+            <Line endX="248.0" layoutX="329.0" layoutY="67.0" startX="-246.0" stroke="#9aa390" />
+            <Text fx:id="insuranceNBRText" layoutX="83.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurence number:...." />
+            <Text fx:id="nameText" layoutX="83.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:..." />
+            <Button fx:id="backButton" layoutX="83.0" layoutY="353.0" mnemonicParsing="false" onAction="#backClick" prefHeight="25.0" prefWidth="123.0" text="Back" />
+            <Button fx:id="editInformationButton" layoutX="409.0" layoutY="353.0" mnemonicParsing="false" onAction="#editClick" prefHeight="25.0" prefWidth="169.0" text="Edit incorrect information" />
+            <Text fx:id="dateText" layoutX="83.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:...." />
+            <Text layoutX="83.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="symptomsText" layoutX="343.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Symptoms:..." />
+            <Text fx:id="findingText" layoutX="356.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finding:.." />
+            <Text fx:id="therapyText" layoutX="351.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thearpy:.." />
+            <Text fx:id="medicationText" layoutX="344.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medication:.." />
+            <Text fx:id="timeText" layoutX="83.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:..." />
+            <Text fx:id="notesText" layoutX="363.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Notes:.." />
+            <Text fx:id="dateOfBirthText" layoutX="82.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date of birth:.....(Age)" />
+            <Text fx:id="genderText" layoutX="83.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:..." />
+            <Button fx:id="viewRevisionsButton" layoutX="269.0" layoutY="353.0" mnemonicParsing="false" onAction="#revisionsClick" text="View revisions" />
+            <ImageView accessibleRole="CHECK_BOX" fitHeight="59.0" fitWidth="57.0" layoutX="11.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../doctor4.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="doctorText" layoutX="360.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doctor:.." />
+            <Text fx:id="diagnosisText" layoutX="82.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Diagnosis:.." />
+      </children>
+    </AnchorPane>
+  </children>
+</fx:root>

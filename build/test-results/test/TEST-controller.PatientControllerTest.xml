@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="controller.PatientControllerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2021-03-05T09:57:33" hostname="oyoki" time="0.045">
+  <properties/>
+  <testcase name="SomeParameterIsSetupWithNUll" classname="controller.PatientControllerTest" time="0.029"/>
+  <testcase name="testEditPatientRecordIlExceptionSecond" classname="controller.PatientControllerTest" time="0.001"/>
+  <testcase name="testEditPatientDetails" classname="controller.PatientControllerTest" time="0.001"/>
+  <testcase name="TheInsuranceNumberIsNotinTheList" classname="controller.PatientControllerTest" time="0.001"/>
+  <testcase name="testEditPatientRecordIlExceptionFirst" classname="controller.PatientControllerTest" time="0.004"/>
+  <testcase name="TheInsuranceNumberIsIntheList" classname="controller.PatientControllerTest" time="0.001"/>
+  <system-out><![CDATA[in exists
+in exists
+in exists
+in exists
+in exists
+in exists
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

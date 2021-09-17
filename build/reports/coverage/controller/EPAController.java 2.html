@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EPAController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt1</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">EPAController.java</span></div><h1>EPAController.java</h1><pre class="source lang-java linenums">package controller;
+
+import model.EPA;
+import java.lang.UnsupportedOperationException;
+
+/**
+ * This class is the central communication interface between controller and model
+ */
+public class EPAController {
+
+    /**
+ 	 * The EPA
+ 	 */
+    private EPA ePA;
+
+    /**
+ 	 * The IOController
+ 	 */
+    private IOController iOController;
+
+    /**
+ 	 * The PatientRecordController
+ 	 */
+    private PatientRecordController patientRecordController;
+
+    /**
+ 	 * The DoctorListController
+ 	 */
+    private DoctorListController doctorListController;
+
+    /**
+ 	 * The PatientController
+ 	 */
+    private PatientController patientController;
+
+	/**
+	 * Constructor for the EPAController
+	 */
+<span class="fc" id="L39">	public EPAController() {</span>
+<span class="fc" id="L40">		ePA = new EPA();</span>
+<span class="fc" id="L41">		iOController = new IOController(this);</span>
+<span class="fc" id="L42">		patientRecordController = new PatientRecordController(this);</span>
+<span class="fc" id="L43">		doctorListController = new DoctorListController(this);</span>
+<span class="fc" id="L44">		patientController = new PatientController(this);</span>
+
+<span class="fc" id="L46">		iOController.load();</span>
+<span class="fc" id="L47">    }</span>
+
+    /**
+ 	 *
+ 	 * This method gives us access to the IOController
+ 	 * @return IOController
+ 	 */
+    public IOController getIOController() {
+<span class="nc" id="L55">        return iOController;</span>
+    }
+
+    /**
+ 	 *
+ 	 * This method gives us access to the DoctorListController
+ 	 * @return DoctorListController
+ 	 */
+    public DoctorListController getDoctorListController() throws UnsupportedOperationException {
+<span class="nc" id="L64">     	return doctorListController;</span>
+    }
+
+    /**
+ 	 *
+ 	 * This method gives us access to the PatientController
+ 	 * @return PatientController
+ 	 */
+    public PatientController getPatientController() throws UnsupportedOperationException {
+<span class="nc" id="L73">     	return patientController;</span>
+    }
+
+    /**
+ 	 *
+ 	 * This method gives us access to the PatientRecordController
+ 	 * @return PatientRecordController
+ 	 */
+    public PatientRecordController getPatientRecordController() throws UnsupportedOperationException {
+<span class="fc" id="L82">        return patientRecordController;</span>
+    }
+
+	/**
+	 * Get-Method for EPA
+	 * @return ePA - gibt eine Referenz von EPA
+	 */
+	public EPA getePA() {
+<span class="fc" id="L90">		return ePA;</span>
+	}
+
+	/**
+	 * Set-Method for EPA
+	 * @param ePA EPA
+	 */
+	public void setePA(EPA ePA) {
+<span class="fc" id="L98">		this.ePA = ePA;</span>
+<span class="fc" id="L99">	}</span>
+
+	/**
+	 * Get-Method for the IOController
+	 * @return IOController
+	 */
+	public IOController getiOController() {
+<span class="nc" id="L106">		return iOController;</span>
+	}
+
+	/**
+	 * Set-Method for the IOController
+	 * @param iOController IOController
+	 */
+	public void setiOController(IOController iOController) {
+<span class="nc" id="L114">		this.iOController = iOController;</span>
+<span class="nc" id="L115">	}</span>
+
+	/**
+	 * Set-Method for the PatientRecordController
+	 * @param patientRecordController PatientRecordController
+	 */
+	public void setPatientRecordController(PatientRecordController patientRecordController) {
+<span class="nc" id="L122">		this.patientRecordController = patientRecordController;</span>
+<span class="nc" id="L123">	}</span>
+
+	/**
+	 * Set-Method for the DoctorListController
+	 * @param doctorListController DoctorListController
+	 */
+	public void setDoctorListController(DoctorListController doctorListController) {
+<span class="nc" id="L130">		this.doctorListController = doctorListController;</span>
+<span class="nc" id="L131">	}</span>
+
+	/**
+	 * Set-Method for the PatientController
+	 * @param patientController PatientController
+	 */
+	public void setPatientController(PatientController patientController) {
+<span class="nc" id="L138">		this.patientController = patientController;</span>
+<span class="nc" id="L139">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

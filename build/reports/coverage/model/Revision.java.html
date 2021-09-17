@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Revision.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt1</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Revision.java</span></div><h1>Revision.java</h1><pre class="source lang-java linenums">package model;
+
+import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.lang.UnsupportedOperationException;
+
+/**
+ * This class represents a Revision made in a Treatment Entry
+ */
+public class Revision implements Serializable {
+
+    /**
+ 	 * The finding of the doctor
+ 	 */
+    private String finding;
+
+    /**
+ 	 * The doctor`s diagnosis
+ 	 */
+    private String diagnosis;
+
+    /**
+ 	 * The therapy chosen by the doctor for the patient
+ 	 */
+    private String therapy;
+
+    /**
+ 	 * The medication the doctor prescribed for the patient
+ 	 */
+    private String medicationPlans;
+
+    /**
+ 	 * The date when the Treatment Entry was created
+ 	 */
+    private Date date;
+
+    /**
+ 	 * The time at which the Treatment Entry was created
+ 	 */
+    private String notes;
+
+    /**
+ 	 * The patient's symptoms
+ 	 */
+    private String symptomes;
+
+    /**
+ 	 * Transfer to a specialist
+ 	 */
+    private Transfer transfer;
+
+    /**
+     * Constructor for a revision
+     * @param finding Finding
+     * @param diagnosis Diagnosis
+     * @param therapy Therapy
+     * @param medicationPlans Medication
+     * @param date Date
+     * @param notes Notes
+     * @param symptomes Symptomes
+     */
+<span class="fc" id="L63">    public Revision(String finding, String diagnosis, String therapy, String medicationPlans, Date date, String notes, String symptomes) {</span>
+<span class="fc" id="L64">        this.finding = finding;</span>
+<span class="fc" id="L65">        this.diagnosis = diagnosis;</span>
+<span class="fc" id="L66">        this.therapy = therapy;</span>
+<span class="fc" id="L67">        this.medicationPlans = medicationPlans;</span>
+<span class="fc" id="L68">        this.date = date;</span>
+<span class="fc" id="L69">        this.notes = notes;</span>
+<span class="fc" id="L70">        this.symptomes = symptomes;</span>
+<span class="fc" id="L71">    }</span>
+
+    /**
+     * Get-Method for a finding
+     * @return finding
+     */
+    public String getFinding() {
+<span class="nc" id="L78">        return finding;</span>
+    }
+
+    /**
+     * Set-Method for a finding
+     * @param finding Finding
+     */
+    public void setFinding(String finding) {
+<span class="nc" id="L86">        this.finding = finding;</span>
+<span class="nc" id="L87">    }</span>
+
+    /**
+     * Get-Method for a diagnosis
+     * @return diagnosis
+     */
+    public String getDiagnosis() {
+<span class="fc" id="L94">        return diagnosis;</span>
+    }
+
+    /**
+     * Set-Method for a diagnosis
+     * @param diagnosis Diagnosis
+     */
+    public void setDiagnosis(String diagnosis) {
+<span class="nc" id="L102">        this.diagnosis = diagnosis;</span>
+<span class="nc" id="L103">    }</span>
+
+    /**
+     * Get-Method for the therapy
+     * @return therapy
+     */
+    public String getTherapy() {
+<span class="nc" id="L110">        return therapy;</span>
+    }
+
+    /**
+     * Set-Methode für die therapy
+     * @param therapy Therapy
+     */
+    public void setTherapy(String therapy) {
+<span class="nc" id="L118">        this.therapy = therapy;</span>
+<span class="nc" id="L119">    }</span>
+
+    /**
+     * Get-Method for the medication
+     * @return medicationPlans
+     */
+    public String getMedicationPlans() {
+<span class="nc" id="L126">        return medicationPlans;</span>
+    }
+
+    /**
+     * Set-Method for the medication
+     * @param medicationPlans Medication
+     */
+    public void setMedicationPlans(String medicationPlans) {
+<span class="nc" id="L134">        this.medicationPlans = medicationPlans;</span>
+<span class="nc" id="L135">    }</span>
+
+    /**
+     * Get-Method for a date
+     * @return date
+     */
+    public Date getDate() {
+<span class="fc" id="L142">        return date;</span>
+    }
+
+    /**
+     * Set-Method for a date
+     * @param date Date
+     */
+    public void setDate(Date date) {
+<span class="nc" id="L150">        this.date = date;</span>
+<span class="nc" id="L151">    }</span>
+
+    /**
+     * Get-Method for the notes
+     * @return notes
+     */
+    public String getNotes() {
+<span class="nc" id="L158">        return notes;</span>
+    }
+
+    /**
+     * Set-Method for the notes
+     * @param notes Notes
+     */
+    public void setNotes(String notes) {
+<span class="nc" id="L166">        this.notes = notes;</span>
+<span class="nc" id="L167">    }</span>
+
+    /**
+     * Get-Method for the Symptoms
+     * @return symptomes
+     */
+    public String getSymptomes() {
+<span class="nc" id="L174">        return symptomes;</span>
+    }
+
+    /**
+     * Set-Methode für die Symptome
+     * @param symptomes Symptome
+     */
+    public void setSymptomes(String symptomes) {
+<span class="nc" id="L182">        this.symptomes = symptomes;</span>
+<span class="nc" id="L183">    }</span>
+
+
+    /**
+     * Get-Method for the transfer data
+     * @return transfer
+     */
+    public Transfer getTransfer() {
+<span class="fc" id="L191">        return transfer;</span>
+    }
+
+    /**
+     * Set-Method for the transfer data
+     * @param transfer Transfer Data
+     */
+<span class="fc" id="L198">    public void setTransfer(Transfer transfer) {this.transfer = transfer;}</span>
+
+    /**
+     * Tostring method that returns a String of the format &quot;Date Time ICD-key&quot; of the revision
+     * @return a String of the format &quot;Date Time ICD-key&quot; of the revision
+     */
+    @Override
+    public String toString() {
+<span class="fc" id="L206">        SimpleDateFormat sdfDate = new SimpleDateFormat(&quot;dd.MM.yyyy&quot;);</span>
+<span class="fc" id="L207">        SimpleDateFormat sdfTime = new SimpleDateFormat(&quot;HH:mm:ss&quot;);</span>
+<span class="fc" id="L208">        String formattedDate = sdfDate.format(date);</span>
+<span class="fc" id="L209">        String formattedTime = sdfTime.format(date);</span>
+<span class="fc" id="L210">        return formattedDate + &quot; &quot; + formattedTime + &quot; &quot; + diagnosis;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

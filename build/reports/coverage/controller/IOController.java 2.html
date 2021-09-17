@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IOController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt1</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">IOController.java</span></div><h1>IOController.java</h1><pre class="source lang-java linenums">package controller;
+
+import java.io.*;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+
+import model.EPA;
+
+/**
+ * This class is used to Load and Save the Files
+ */
+public class IOController {
+
+    /**
+ 	 * The ePA Controller
+ 	 */
+    private EPAController ePAController;
+<span class="fc" id="L19">    private static final File SAVE_FILE = new File(&quot;SAVE_FILE&quot;);</span>
+
+    /**
+     * Constructor for the ePA Controller
+     * @param ePAController ePA Controller
+     */
+<span class="fc" id="L25">    public IOController(EPAController ePAController) {</span>
+<span class="fc" id="L26">        this.ePAController = ePAController;</span>
+<span class="fc" id="L27">    }</span>
+
+    /**
+ 	 * Ability to save the Files
+ 	 */
+    public void save(){
+        try{
+<span class="fc" id="L34">            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(SAVE_FILE));</span>
+<span class="fc" id="L35">            stream.writeObject(ePAController.getePA());</span>
+<span class="fc" id="L36">            stream.close();</span>
+        }
+<span class="nc" id="L38">        catch (IOException ioException){</span>
+<span class="nc" id="L39">            ioException.printStackTrace();</span>
+<span class="nc" id="L40">            System.out.println(&quot;error while saving&quot;);</span>
+<span class="fc" id="L41">        }</span>
+<span class="fc" id="L42">    }</span>
+
+    /**
+ 	 *
+ 	 * Ability to load the Files
+ 	 */
+    public void load() {
+
+<span class="fc bfc" id="L50" title="All 2 branches covered.">            if (!SAVE_FILE.exists()){</span>
+<span class="fc" id="L51">                System.out.println(&quot;in exists&quot;);</span>
+<span class="fc" id="L52">                return;</span>
+            }
+            try {
+<span class="fc" id="L55">                ObjectInputStream stream = new ObjectInputStream(new FileInputStream(SAVE_FILE));</span>
+<span class="fc" id="L56">                EPA ePAC = (EPA) stream.readObject();</span>
+<span class="fc" id="L57">                ePAController.setePA(ePAC);</span>
+<span class="fc" id="L58">                stream.close();</span>
+
+<span class="nc" id="L60">            } catch (Exception ioException) {</span>
+<span class="nc" id="L61">                ioException.printStackTrace();</span>
+<span class="nc" id="L62">                System.out.println(&quot;error while loading&quot;);</span>
+<span class="fc" id="L63">            }</span>
+<span class="fc" id="L64">        }</span>
+
+    /**
+     * Get-Method for the EPA Controller
+     * @return ePAController
+     */
+    public EPAController getePAController() {
+<span class="nc" id="L71">        return ePAController;</span>
+    }
+
+    /**
+     * Set-Method for the EPA Controller
+     * @param ePAController EPA Controller
+     */
+    public void setePAController(EPAController ePAController) {
+<span class="nc" id="L79">        this.ePAController = ePAController;</span>
+<span class="nc" id="L80">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

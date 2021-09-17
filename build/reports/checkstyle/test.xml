@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.24">
+<file name="/home/oyoki/IdeaProjects/projekt1/tests/controller/DoctorListControllerTest.java">
+</file>
+<file name="/home/oyoki/IdeaProjects/projekt1/tests/controller/IOControllerTest.java">
+</file>
+<file name="/home/oyoki/IdeaProjects/projekt1/tests/controller/PatientControllerTest.java">
+</file>
+<file name="/home/oyoki/IdeaProjects/projekt1/tests/controller/PatientRecordControllerTest.java">
+</file>
+<file name="/home/oyoki/IdeaProjects/projekt1/tests/controller/TransferControllerTest.java">
+</file>
+<file name="/home/oyoki/IdeaProjects/projekt1/tests/controller/TreatmentEntryTest.java">
+</file>
+<file name="/home/oyoki/IdeaProjects/projekt1/tests/model/RevisionTest.java">
+</file>
+<file name="/home/oyoki/IdeaProjects/projekt1/tests/model/TreatmentEntryTest.java">
+</file>
+</checkstyle>

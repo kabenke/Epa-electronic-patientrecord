@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="controller.TransferControllerTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-03-05T09:57:33" hostname="oyoki" time="0.018">
+  <properties/>
+  <testcase name="testCheckInvalidTransfer" classname="controller.TransferControllerTest" time="0.002"/>
+  <testcase name="testCheckTransferInvalidTransfer" classname="controller.TransferControllerTest" time="0.002"/>
+  <testcase name="testCheckValidTransfer" classname="controller.TransferControllerTest" time="0.004"/>
+  <testcase name="testCheckTransferInvalidDoctor" classname="controller.TransferControllerTest" time="0.003"/>
+  <testcase name="testAddTransfer" classname="controller.TransferControllerTest" time="0.001"/>
+  <system-out><![CDATA[in exists
+in exists
+in exists
+in exists
+in exists
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

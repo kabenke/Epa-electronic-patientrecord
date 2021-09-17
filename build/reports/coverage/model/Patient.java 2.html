@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Patient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt1</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Patient.java</span></div><h1>Patient.java</h1><pre class="source lang-java linenums">package model;
+
+import java.util.Date;
+import java.io.Serializable;
+
+/**
+ * This class represents a Patient in the system
+ */
+public class Patient implements Serializable{
+    /**
+ 	 * Patient's insurance number
+ 	 */
+    private String insuranceNBR;
+    /**
+ 	 * Patient's name
+ 	 */
+    private String name;
+    /**
+ 	 * Patient's office address
+ 	 */
+    private String address;
+    /**
+ 	 * Patient's name
+ 	 */
+    private String gender;
+    /**
+ 	 * Patient's date of birth
+ 	 */
+    private Date dateOfBirth;
+    /**
+ 	 * patient's insurance name
+ 	 */
+    private String insurance;
+
+    /**
+     * Konstruktor für einen Patienten
+     * @param insuranceNBR Versichertennummer des Patienten
+     * @param name Name des Patienten
+     * @param address Adresse des Patienten
+     * @param gender Geschlecht des Patienten
+     * @param dateOfBirth Geburtsdatum des Patienten
+     * @param insurance Versicherung des Patienten
+     */
+<span class="fc" id="L44">    public Patient(String insuranceNBR, String name, String address, String gender, Date dateOfBirth, String insurance) {</span>
+<span class="fc" id="L45">        this.insuranceNBR = insuranceNBR;</span>
+<span class="fc" id="L46">        this.name = name;</span>
+<span class="fc" id="L47">        this.address = address;</span>
+<span class="fc" id="L48">        this.gender = gender;</span>
+<span class="fc" id="L49">        this.dateOfBirth = dateOfBirth;</span>
+<span class="fc" id="L50">        this.insurance = insurance;</span>
+<span class="fc" id="L51">    }</span>
+
+    /**
+     * insuranceNBR get-Methode
+     * @return insuranceNBR
+     */
+    public String getInsuranceNBR() {
+<span class="fc" id="L58">        return insuranceNBR;</span>
+    }
+
+    /**
+     * insuranceNBR set-Methode
+     * @param insuranceNBR
+     */
+    public void setInsuranceNBR(String insuranceNBR) {
+<span class="fc" id="L66">        this.insuranceNBR = insuranceNBR;</span>
+<span class="fc" id="L67">    }</span>
+
+    /**
+     * name get-Methode
+     * @return name
+     */
+    public String getName() {
+<span class="fc" id="L74">        return name;</span>
+    }
+
+    /**
+     * name set-Methode
+     * @param name
+     */
+    public void setName(String name) {
+<span class="fc" id="L82">        this.name = name;</span>
+<span class="fc" id="L83">    }</span>
+
+    /**
+     * address get-Methode
+     * @return address
+     */
+    public String getAddress() {
+<span class="fc" id="L90">        return address;</span>
+    }
+
+    /**
+     * address set-Methode
+     * @param address
+     */
+    public void setAddress(String address) {
+<span class="fc" id="L98">        this.address = address;</span>
+<span class="fc" id="L99">    }</span>
+
+    /**
+     * gender get-Methode
+     * @return gender
+     */
+    public String getGender() {
+<span class="fc" id="L106">        return gender;</span>
+    }
+
+    /**
+     * gender set-Methode
+     * @param gender
+     */
+    public void setGender(String gender) {
+<span class="fc" id="L114">        this.gender = gender;</span>
+<span class="fc" id="L115">    }</span>
+
+    /**
+     * dateOfBirth get-Methode
+     * @return dateOfBirth
+     */
+    public Date getDateOfBirth() {
+<span class="fc" id="L122">        return dateOfBirth;</span>
+    }
+
+    /**
+     * dateOfBirth set-Methode
+     * @param dateOfBirth
+     */
+    public void setDateOfBirth(Date dateOfBirth) {
+<span class="fc" id="L130">        this.dateOfBirth = dateOfBirth;</span>
+<span class="fc" id="L131">    }</span>
+
+    /**
+     * insurance get-Methode
+     * @return insurance
+     */
+    public String getInsurance() {
+<span class="fc" id="L138">        return insurance;</span>
+    }
+
+    /**
+     * insurance set-Methode
+     * @param insurance
+     */
+    public void setInsurance(String insurance) {
+<span class="fc" id="L146">        this.insurance = insurance;</span>
+<span class="fc" id="L147">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

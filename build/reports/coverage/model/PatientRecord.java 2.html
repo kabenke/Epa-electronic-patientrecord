@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientRecord.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt1</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">PatientRecord.java</span></div><h1>PatientRecord.java</h1><pre class="source lang-java linenums">package model;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+/**
+ * This class represents a Patient Record
+ */
+public class PatientRecord implements Serializable {
+
+    /**
+ 	 * The Patient the Patient Record belongs to
+ 	 */
+    private Patient patient;
+
+    /**
+ 	 * A List of all Treatment Entries
+ 	 */
+    private ArrayList&lt;TreatmentEntry&gt; treatmentEntrys;
+
+    /**
+     * Whether the patient is currently active in the system
+     */
+    private boolean isActive;
+
+    /**
+     * Constructor for the Patient
+     * @param patient Patient
+     */
+<span class="fc" id="L30">    public PatientRecord(Patient patient) {</span>
+<span class="fc" id="L31">        this.patient = patient;</span>
+<span class="fc" id="L32">        this.treatmentEntrys = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L33">        this.isActive = false;</span>
+<span class="fc" id="L34">    }</span>
+
+    /**
+     * Adds a new Treatment Entry to the Patient Record by adding it to the ArrayList TreatmentEntrys
+ 	 * @param treatmentEntry - A Treatment Entry
+ 	 */
+    public void addTreatmentEntry(TreatmentEntry treatmentEntry) {
+<span class="fc" id="L41">        this.treatmentEntrys.add(treatmentEntry);</span>
+<span class="fc" id="L42">    }</span>
+
+    /**
+     * Get-Method for the Patient
+     * @return Patient
+     */
+    public Patient getPatient() {
+<span class="fc" id="L49">        return patient;</span>
+    }
+
+    /**
+     * Set_Method for the Patient
+     * @param patient Patient
+     */
+    public void setPatient(Patient patient) {
+<span class="nc" id="L57">        this.patient = patient;</span>
+<span class="nc" id="L58">    }</span>
+
+    /**
+     * Get-Method for Treatment Entries
+     * @return  ArrayList of the Treatment Entries
+     */
+    public ArrayList&lt;TreatmentEntry&gt; getTreatmentEntrys() {
+<span class="fc" id="L65">        return treatmentEntrys;</span>
+    }
+
+    /**
+     * Set-Method for Treatment Entries
+     * @param treatmentEntrys ArrayList of the Treatment Entries
+     */
+    public void setTreatmentEntrys(ArrayList&lt;TreatmentEntry&gt; treatmentEntrys) {
+<span class="nc" id="L73">        this.treatmentEntrys = treatmentEntrys;</span>
+<span class="nc" id="L74">    }</span>
+
+    /**
+     * Get-method for the isActive attribute
+     * @return the value of the isActive attribute
+     */
+    public boolean getIsActive() {
+<span class="nc" id="L81">        return this.isActive;</span>
+    }
+
+    /**
+     * Set-method for the isActive attribute
+     * @param isActive boolean value to which the isActive attribute will be set
+     */
+    public void setIsActive(boolean isActive) {
+<span class="nc" id="L89">        this.isActive = isActive;</span>
+<span class="nc" id="L90">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
