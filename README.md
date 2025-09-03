@@ -9,7 +9,7 @@
 
 # Projekt 1 im Sopra 21A
 
-In diesem Repository entsteht euer erstes Projekt im Sopra. Für Planung, Modellierung und generelle gruppeninterne Angelegenheiten, verwendet das Wiki des Projektes. 
+In diesem Repository entsteht unser erstes Projekt im SoftwarePraktikum. Für Planung, Modellierung und generelle gruppeninterne Angelegenheiten, verwendet das Wiki des Projektes. 
 
 ## Dokumentation
 
